@@ -3,7 +3,8 @@ $(document).ready(function(){
     render: function() {
       return (
         React.createElement('div', {className: "commentBox"},
-          "Hello, world! I am a CommentBox."
+          "Hello, world! I am a CommentBox.",
+          React.createElement('p', {className: "comment"}, "this is comment")
         )
       );
     }
