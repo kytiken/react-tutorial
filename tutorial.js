@@ -10,6 +10,14 @@ $(document).ready(function(){
     }
   });
 
+  var Comment = React.createClass({displayName: 'Comment',
+    render: function() {
+      return (
+        React.createElement('p', {className: "comment"}, "this is comment")
+      );
+    }
+  });
+
   ReactDOM.render(
     React.createElement(CommentBox, null),
     document.getElementById('content')
