@@ -4,7 +4,7 @@ $(document).ready(function(){
       return (
         React.createElement('div', {className: "commentBox"},
           "Hello, world! I am a CommentBox.",
-          React.createElement(Comment, null, null)
+          React.createElement(Comment, {body: "this is comment"}, null)
         )
       );
     }
@@ -13,7 +13,7 @@ $(document).ready(function(){
   var Comment = React.createClass({displayName: 'Comment',
     render: function() {
       return (
-        React.createElement('p', {className: "comment"}, "this is comment")
+        React.createElement('p', {className: "comment"}, this.props.body)
       );
     }
   });
