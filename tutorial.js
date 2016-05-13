@@ -1,10 +1,15 @@
 $(document).ready(function(){
   var CommentBox = React.createClass({displayName: 'CommentBox',
     render: function() {
+      var commentNodes = this.props.commentData.map(function (comment) {
+        return (
+          React.createElement(Comment, comment, null)
+        );
+      });
       return (
         React.createElement('div', {className: "commentBox"},
           "Hello, world! I am a CommentBox.",
-          React.createElement(Comment, {body: "this is comment"}, null)
+          commentNodes
         )
       );
     }
@@ -19,7 +24,7 @@ $(document).ready(function(){
   });
 
   ReactDOM.render(
-    React.createElement(CommentBox, null),
+    React.createElement(CommentBox, {commentData: [{body: "this is comment"}]}),
     document.getElementById('content')
   );
 });
