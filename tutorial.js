@@ -4,7 +4,6 @@ $(document).ready(function(){
       return (
         React.createElement('div', {className: "commentBox"},
           "Hello, world! I am a CommentBox.",
-          React.createElement('p', {className: "comment"}, "this is comment"),
           React.createElement(Comment, null, null)
         )
       );
