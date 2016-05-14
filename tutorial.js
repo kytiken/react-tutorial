@@ -34,6 +34,28 @@ $(document).ready(function(){
   });
 
   var CommentForm = React.createClass({displayName: 'CommentForm',
+    actionUrl: "http://localhost:3000/comments.json",
+    formData: function() {
+      return {
+        'comment': {
+          body: ReactDOM.findDOMNode(this.refs.body).value.trim()
+        }
+      }
+    },
+    handleSubmit: function() {
+      $.ajax({
+        url: this.actionUrl,
+        dataType: 'json',
+        type: 'POST',
+        data: this.formData(),
+        success: function(data) {
+          // TODO: 送信成功後の処理
+        },
+        error: function(xhr, status, error) {
+          console.error(this.actionUrl, status, error.toString());
+        }.bind(this)
+      });
+    },
     render: function() {
       return (
         React.createElement('div', {className: 'comment-form'},
