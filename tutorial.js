@@ -32,6 +32,17 @@ $(document).ready(function(){
     }
   });
 
+  var CommentForm = React.createClass({displayName: 'CommentForm',
+    render: function() {
+      return (
+        React.createElement('div', {className: 'comment-form'},
+          React.createElement('input', {id: 'comment_body', name: 'comment[body]', type: 'text', ref: 'body'}, null),
+          React.createElement('span', {onClick: this.handleSubmit}, 'submit')
+        )
+      );
+    }
+  });
+
   ReactDOM.render(
     React.createElement(CommentBox, {commentData: [{body: "this is comment"}]}),
     document.getElementById('content')
