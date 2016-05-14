@@ -3,8 +3,11 @@ $(document).ready(function(){
     getInitialState: function() {
       return {commentData: []};
     },
+    commentIndexUrl: 'http://localhost:3000/comments.json',
     componentDidMount: function() {
-      this.setState({commentData: this.props.commentData});
+      $.get(this.commentIndexUrl, function(data) {
+        this.setState({commentData: data});
+      }.bind(this));
     },
     render: function() {
       var commentNodes = this.state.commentData.map(function (comment) {
