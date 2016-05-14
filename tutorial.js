@@ -17,6 +17,7 @@ $(document).ready(function(){
       });
       return (
         React.createElement('div', {className: "commentBox"},
+          React.createElement(CommentForm, {}, null),
           "Hello, world! I am a CommentBox.",
           commentNodes
         )
