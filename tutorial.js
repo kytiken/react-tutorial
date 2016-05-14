@@ -9,6 +9,11 @@ $(document).ready(function(){
         this.setState({commentData: data});
       }.bind(this));
     },
+    onSubmitSuccess: function(comment) {
+      var currentStateCommentData = this.state.commentData;
+      currentStateCommentData.push(comment)
+      this.setState({commentData: currentStateCommentData});
+    },
     render: function() {
       var commentNodes = this.state.commentData.map(function (comment) {
         return (
@@ -17,7 +22,7 @@ $(document).ready(function(){
       });
       return (
         React.createElement('div', {className: "commentBox"},
-          React.createElement(CommentForm, {}, null),
+          React.createElement(CommentForm, {onSubmitSuccess: this.onSubmitSuccess}, null),
           "Hello, world! I am a CommentBox.",
           commentNodes
         )
@@ -49,8 +54,8 @@ $(document).ready(function(){
         type: 'POST',
         data: this.formData(),
         success: function(data) {
-          // TODO: 送信成功後の処理
-        },
+          this.props.onSubmitSuccess(data);
+        }.bind(this),
         error: function(xhr, status, error) {
           console.error(this.actionUrl, status, error.toString());
         }.bind(this)
