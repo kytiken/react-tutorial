@@ -1,7 +1,13 @@
 $(document).ready(function(){
   var CommentBox = React.createClass({displayName: 'CommentBox',
+    getInitialState: function() {
+      return {commentData: []};
+    },
+    componentDidMount: function() {
+      this.setState({commentData: this.props.commentData});
+    },
     render: function() {
-      var commentNodes = this.props.commentData.map(function (comment) {
+      var commentNodes = this.state.commentData.map(function (comment) {
         return (
           React.createElement(Comment, comment, null)
         );
