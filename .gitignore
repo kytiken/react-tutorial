@@ -1,1 +1,3 @@
 /comment-server/vendor/bundle
+/node_modules
+/bundle.js
